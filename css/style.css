@@ -43,7 +43,12 @@ button {
   max-width: 1220px;
   margin: 0 auto;
 }
-
+.content-item {
+  display: none;
+}
+.content-item.content-item--active {
+  display: inline-block;
+}
 .header {
   min-height: 100vh;
   position: relative;
@@ -79,21 +84,35 @@ button {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(180deg, #858485 0%, rgba(255, 255, 255, 0) 100%);
   z-index: -2;
 }
+.header__content-images:has(.color--black.content-item--active)::before {
+  background: linear-gradient(180deg, #858485 0%, rgba(255, 255, 255, 0) 100%);
+}
+.header__content-images:has(.color--red.content-item--active)::before {
+  background: linear-gradient(180deg, #f6deda 0%, rgba(255, 255, 255, 0) 100%);
+}
+.header__content-images:has(.color--green.content-item--active)::before {
+  background: linear-gradient(180deg, #e0eedd 0%, rgba(255, 255, 255, 0) 100%);
+}
+.header__content-images:has(.color--blue.content-item--active)::before {
+  background: linear-gradient(180deg, #c3d5e6 0%, rgba(255, 255, 255, 0) 100%);
+}
+
 .header__content-images {
   text-align: center;
   padding-bottom: 20px;
 }
 
 .title {
-  font-size: 210px;
+  font-size: 200px;
   font-weight: 700;
   position: absolute;
   padding-top: 25px;
 }
-
+.title span {
+  opacity: 0.8;
+}
 .title--pod {
   position: relative;
   z-index: -1;
@@ -106,12 +125,12 @@ button {
 
 .title--m {
   display: inline-block;
-  transform: translate(-30px, 330px);
+  transform: translate(10px, 330px);
 }
 
 .title--ax {
   display: inline-block;
-  transform: translate(-100px, 500px);
+  transform: translate(-100px, 530px);
   position: relative;
   z-index: -1;
 }
@@ -144,6 +163,14 @@ button {
   padding: 25px 35px;
   border-radius: 20px;
   border: 1px solid #cdcdcd;
+  transition-duration: 500ms;
+}
+.choose__color-btn:hover {
+  background-color: #fbfbfb;
+  border-style: dotted;
+}
+.choose__color-btn--active {
+  display: none;
 }
 
 .composition__inner {
@@ -205,7 +232,7 @@ button {
 }
 
 .audio {
-  background-image: url(../images/audio-man.jpg);
+  background-image: url(../images/audio-black.jpg);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
